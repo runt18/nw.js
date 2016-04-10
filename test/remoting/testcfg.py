@@ -6,7 +6,9 @@ import utils
 
 class RemotingTestCase(test.TestCase):
 
-  def __init__(self, path, file, arch, mode, nwdir, context, config, additional=[]):
+  def __init__(self, path, file, arch, mode, nwdir, context, config, additional=None):
+    if additional is None:
+      additional = []
     super(RemotingTestCase, self).__init__(context, path, arch, mode, nwdir)
     self.file = file
     self.config = config
@@ -60,7 +62,9 @@ class RemotingTestCase(test.TestCase):
 
 class RemotingTestConfiguration(test.TestConfiguration):
 
-  def __init__(self, context, root, section, additional=[]):
+  def __init__(self, context, root, section, additional=None):
+    if additional is None:
+      additional = []
     super(RemotingTestConfiguration, self).__init__(context, root)
     self.section = section
     self.additional_flags = additional

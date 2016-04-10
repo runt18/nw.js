@@ -41,7 +41,9 @@ FILES_PATTERN = re.compile(r"//\s+Files:(.*)")
 
 class SimpleTestCase(test.TestCase):
 
-  def __init__(self, path, file, arch, mode, nwdir, context, config, additional=[]):
+  def __init__(self, path, file, arch, mode, nwdir, context, config, additional=None):
+    if additional is None:
+      additional = []
     super(SimpleTestCase, self).__init__(context, path, arch, mode, nwdir)
     self.file = file
     self.config = config
@@ -127,7 +129,9 @@ class SimpleTestCase(test.TestCase):
 
 class SimpleTestConfiguration(test.TestConfiguration):
 
-  def __init__(self, context, root, section, additional=[]):
+  def __init__(self, context, root, section, additional=None):
+    if additional is None:
+      additional = []
     super(SimpleTestConfiguration, self).__init__(context, root)
     self.section = section
     self.additional_flags = additional
@@ -156,7 +160,9 @@ class SimpleTestConfiguration(test.TestConfiguration):
       test.ReadConfigurationInto(status_file, sections, defs)
 
 class ParallelTestConfiguration(SimpleTestConfiguration):
-  def __init__(self, context, root, section, additional=[]):
+  def __init__(self, context, root, section, additional=None):
+    if additional is None:
+      additional = []
     super(ParallelTestConfiguration, self).__init__(context, root, section,
                                                     additional)
 
@@ -168,7 +174,9 @@ class ParallelTestConfiguration(SimpleTestConfiguration):
     return result
 
 class AddonTestConfiguration(SimpleTestConfiguration):
-  def __init__(self, context, root, section, additional=[]):
+  def __init__(self, context, root, section, additional=None):
+    if additional is None:
+      additional = []
     super(AddonTestConfiguration, self).__init__(context, root, section)
 
   def Ls(self, path):
