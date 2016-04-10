@@ -38,7 +38,7 @@ dlpath       = args.dlpath
 date         = datetime.date.today().strftime('%m-%d-%Y')
 
 # If the binaries location is not given, calculate it from script related dir.
-if dist_dir == None:
+if dist_dir is None:
     dist_dir = os.path.join(os.path.dirname(__file__),
             os.pardir, os.pardir, os.pardir, 'out', 'Release')
 

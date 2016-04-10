@@ -46,7 +46,7 @@ step = args.step
 skip = args.skip
 binaries_location = args.path
 # If the binaries location is not given, calculate it from script related dir.
-if binaries_location == None:
+if binaries_location is None:
     binaries_location = os.path.join(os.path.dirname(__file__),
             os.pardir, os.pardir, os.pardir, 'out', 'Release')
 
@@ -68,7 +68,7 @@ try:
 except:
     pass
 
-if args.icudat != None:
+if args.icudat is not None:
     #FIXME: for some reason they are the same file (hard link) and copy will fail
     os.remove(os.path.join(binaries_location, 'icudtl.dat'))
     shutil.copy(args.icudat, binaries_location)
@@ -115,7 +115,7 @@ if platform_name == 'osx':
     else: # should be 'x86_64'
         arch = 'x64'
 
-if args.arch != None:
+if args.arch is not None:
     arch = args.arch
 
 nw_ver = getnwversion.nw_version
@@ -400,7 +400,7 @@ def make_packages(targets):
     for t in targets:
         if len(t['input']) == 0:
             continue
-        if t['compress'] == None:
+        if t['compress'] is None:
             for f in t['input']:
                 src = os.path.join(binaries_location, f)
                 if t['output'] != '':
@@ -445,9 +445,9 @@ generators['others'] = generate_target_others
 # Process targets
 targets = []
 for s in steps:
-    if (step != None) and (s != step):
+    if (step is not None) and (s != step):
             continue
-    if (skip != None) and (s == skip):
+    if (skip is not None) and (s == skip):
             continue
     targets.append(generators[s](platform_name, arch, nw_ver))
 
