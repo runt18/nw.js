@@ -17,7 +17,7 @@ def assert_dom(id, expect):
 def test_shortcut_create(keys, expect="success"):
     key = '+'.join(keys)
     id = 'create-' + '-'.join(keys)
-    reg_script = 'createShortcut("%s", "%s")' % (id, key)
+    reg_script = 'createShortcut("{0!s}", "{1!s}")'.format(id, key)
     print reg_script
     driver.execute_script(reg_script)
     assert_dom(id, expect)

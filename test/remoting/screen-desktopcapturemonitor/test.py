@@ -12,7 +12,7 @@ def assert_event_fired(event_name):
         pass
     driver.switch_to_window(base_window)
     assert("success" in driver.find_element_by_id(event_name).get_attribute('innerHTML'))
-    print "%s triggered" % event_name
+    print "{0!s} triggered".format(event_name)
     if tmp_window_handle is not None:
         driver.switch_to_window(tmp_window_handle)
 

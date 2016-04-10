@@ -75,7 +75,7 @@ for i in range(len(file_list)):
         break
 
 def print_progress(transmitted, total):
-    print ' %d%% transferred of total: %d bytes.' % (transmitted*100/total, total)
+    print ' {0:d}% transferred of total: {1:d} bytes.'.format(transmitted*100/total, total)
     sys.stdout.flush()
 
 

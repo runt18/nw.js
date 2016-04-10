@@ -46,7 +46,7 @@ if opts.target:
 
 exec_args = ['nw-gyp',
              'configure',
-             '--target=%s'%(target),
+             '--target={0!s}'.format((target)),
              'build']
 
 win = sys.platform in ('win32', 'cygwin')

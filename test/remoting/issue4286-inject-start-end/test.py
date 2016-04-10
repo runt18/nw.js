@@ -16,10 +16,10 @@ try:
     print driver.current_url
     wait_window_handles(driver, 2)
     result = driver.find_element_by_id('inject_start').get_attribute('innerHTML')
-    print 'inject_js_start: %s' % result
+    print 'inject_js_start: {0!s}'.format(result)
     assert('success' in result)
     result = driver.find_element_by_id('inject_end').get_attribute('innerHTML')
-    print 'inject_js_end: %s' % result
+    print 'inject_js_end: {0!s}'.format(result)
     assert('success' in result)
 finally:
     driver.quit()

@@ -45,14 +45,14 @@ def copytree(src, dst, symlinks=False, ignore=None):
             if not os.path.exists(d) or os.stat(s).st_mtime - os.stat(d).st_mtime > 1:
                 shutil.copy2(s, d)
 os.mkdir(pkg1)
-print "copying %s to %s" % (nwdist, pkg1)
+print "copying {0!s} to {1!s}".format(nwdist, pkg1)
 copytree(nwdist, pkg1)
 if platform.system() == 'Darwin':
     appnw = os.path.join(pkg1, 'nwjs.app', 'Contents', 'Resources', 'app.nw')
-    print "copying %s to %s" % (appdir, appnw)
+    print "copying {0!s} to {1!s}".format(appdir, appnw)
     copytree(appdir, appnw)
 else:
-    print "copying %s to %s" % (appdir, pkg1)
+    print "copying {0!s} to {1!s}".format(appdir, pkg1)
     copytree(appdir, pkg1)
 
 #chrome_options = Options()
@@ -72,15 +72,15 @@ finally:
 ######## test compressed package
 
 os.mkdir(pkg2)
-print "copying %s to %s" % (nwdist, pkg2)
+print "copying {0!s} to {1!s}".format(nwdist, pkg2)
 copytree(nwdist, pkg2)
 if platform.system() == 'Darwin':
     appnw = os.path.join(pkg2, 'nwjs.app', 'Contents', 'Resources', 'app.nw')
-    print "compressing %s to %s" % (appdir, appnw)
+    print "compressing {0!s} to {1!s}".format(appdir, appnw)
     compress(appdir, appnw)
 else:
     package_nw = os.path.join(pkg2, 'package.nw')
-    print "compressing %s to %s" % (appdir, package_nw)
+    print "compressing {0!s} to {1!s}".format(appdir, package_nw)
     compress(appdir, package_nw)
 
 driver_path=os.path.join(pkg2, 'chromedriver')
@@ -98,10 +98,10 @@ finally:
 
 if platform.system() != 'Darwin':
     os.mkdir(pkg3)
-    print "copying %s to %s" % (nwdist, pkg3)
+    print "copying {0!s} to {1!s}".format(nwdist, pkg3)
     copytree(nwdist, pkg3)
     package_nw = os.path.join(pkg3, 'package.nw')
-    print "compressing %s to %s" % (appdir, package_nw)
+    print "compressing {0!s} to {1!s}".format(appdir, package_nw)
     compress(appdir, package_nw)
     if platform.system() == 'Linux':
         nwbin = os.path.join(pkg3, 'nw')

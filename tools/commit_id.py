@@ -28,7 +28,7 @@ final_hash = ''
 for repo in repos:
     try:
         repo_path = os.path.join(cwd, repo)
-        final_hash += grab_output('git rev-parse --short=%d HEAD' % commit_id_size, repo_path)
+        final_hash += grab_output('git rev-parse --short={0:d} HEAD'.format(commit_id_size), repo_path)
         final_hash += '-'
     except:
         final_hash = 'invalid-hash'
@@ -37,7 +37,7 @@ for repo in repos:
 final_hash = final_hash.rstrip('-')
 hfile = open(output_file, 'w')
 
-hfile.write('#define NW_COMMIT_HASH "%s"\n'    % final_hash)
-hfile.write('#define NW_COMMIT_HASH_SIZE %d\n' % len(final_hash))
+hfile.write('#define NW_COMMIT_HASH "{0!s}"\n'.format(final_hash))
+hfile.write('#define NW_COMMIT_HASH_SIZE {0:d}\n'.format(len(final_hash)))
 
 hfile.close()

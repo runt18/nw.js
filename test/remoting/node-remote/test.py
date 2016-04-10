@@ -17,12 +17,12 @@ server = subprocess.Popen(['python', 'http-server.py', port])
 
 manifest = open('package.json', 'w')
 manifest.write('''
-{
+{{
   "name":"test-node-remote",
   "node-remote":"<all_urls>",
-  "main":"http://localhost:%s/index.html"
-}
-''' % (port))
+  "main":"http://localhost:{0!s}/index.html"
+}}
+'''.format((port)))
 manifest.close()
 
 driver = webdriver.Chrome(executable_path=os.environ['CHROMEDRIVER'], chrome_options=chrome_options, service_log_path="log", service_args=["--verbose"])
