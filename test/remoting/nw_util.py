@@ -42,11 +42,11 @@ def switch_to_devtools(driver, devtools_window=None):
 
 def no_live_process(driver, print_if_fail=True):
     if platform.system() == 'Windows':
-        pgrep = subprocess.Popen(['wmic', 'process', 'where', '(ParentProcessId=%s)' % driver.service.process.pid, 'get', 'ProcessId'], stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+        pgrep = subprocess.Popen(['wmic', 'process', 'where', '(ParentProcessId={0!s})'.format(driver.service.process.pid), 'get', 'ProcessId'], stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
         out, err = pgrep.communicate()
         ret = ('No Instance(s) Available.' in out)
         if not ret and print_if_fail:
-            print 'live chrome processes:\n%s' % out
+            print 'live chrome processes:\n{0!s}'.format(out)
         # expect "No Instance(s) Available." in output
         return ret
     else:
@@ -54,7 +54,7 @@ def no_live_process(driver, print_if_fail=True):
         out, err = pgrep.communicate()
         ret = (pgrep.returncode == 1)
         if not ret and print_if_fail:
-            print 'live chrome processes:\n%s' % out
-            print 'pgrep exit with %s' % pgrep.returncode
+            print 'live chrome processes:\n{0!s}'.format(out)
+            print 'pgrep exit with {0!s}'.format(pgrep.returncode)
         # expect exit 1 from pgrep, which means no chrome process alive
         return ret

@@ -18,7 +18,7 @@ def assert_dom_not(id, not_expect):
 
 def test_get_text():
   id = 'test-get-text'
-  script = 'getText("%s")' % id
+  script = 'getText("{0!s}")'.format(id)
   print script
   driver.execute_script(script)
   assert_dom(id, 'success')
@@ -26,12 +26,12 @@ def test_get_text():
 def test_set_text():
   id = 'test-set-text-1'
   value = 'abc'
-  script = 'setText("%s", "%s")' % (id, value)
+  script = 'setText("{0!s}", "{1!s}")'.format(id, value)
   print script
   driver.execute_script(script)
   assert_dom(id, 'success')
   id = 'test-set-text-2'
-  script = 'getText("%s")' % id
+  script = 'getText("{0!s}")'.format(id)
   print script
   driver.execute_script(script)
   assert_dom(id, 'success')
@@ -40,24 +40,24 @@ def test_set_text():
 def test_clear():
   id = 'test-clear-1'
   value = 'abc'
-  script = 'setText("%s", "%s")' % (id, value)
+  script = 'setText("{0!s}", "{1!s}")'.format(id, value)
   print script
   driver.execute_script(script)
   assert_dom(id, 'success')
   id = 'test-clear-2'
-  script = 'getText("%s")' % id
+  script = 'getText("{0!s}")'.format(id)
   print script
   driver.execute_script(script)
   assert_dom(id, 'success')
   assert_dom(id, value)
   id = 'test-clear-3'
-  script = 'clearClipboard("%s")' % id
+  script = 'clearClipboard("{0!s}")'.format(id)
   print script
   driver.execute_script(script)
   assert_dom(id, 'success')
   id = 'test-clear-4'
   value = 'abc'
-  script = 'getText("%s")' % id
+  script = 'getText("{0!s}")'.format(id)
   print script
   driver.execute_script(script)
   assert_dom_not(id, value) 

@@ -17,7 +17,7 @@ def assert_dom(id, expect):
 def test_reg(keys, pykeys=None, expect="success"):
     key = '+'.join(keys)
     id = 'reg-' + '-'.join(keys)
-    reg_script = 'reg("%s", "%s")' % (id, key)
+    reg_script = 'reg("{0!s}", "{1!s}")'.format(id, key)
     print reg_script
     driver.execute_script(reg_script)
     if pykeys is not None:
@@ -28,7 +28,7 @@ def test_reg(keys, pykeys=None, expect="success"):
 def test_unreg(keys, expect="success"):
     key = '+'.join(keys)
     id = 'unreg-' + '-'.join(keys)
-    unreg_script = 'unreg("%s", "%s")' % (id, key)
+    unreg_script = 'unreg("{0!s}", "{1!s}")'.format(id, key)
     print unreg_script
     driver.execute_script(unreg_script)
     assert_dom(id, expect)

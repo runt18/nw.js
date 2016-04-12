@@ -14,7 +14,7 @@ for line in f:
   if re.match('#define NW_PATCH_VERSION', line):
     patch = line.split()[2]
 
-nw_version = '%(major)s.%(minor)s.%(patch)s'% locals()  
+nw_version = '{major!s}.{minor!s}.{patch!s}'.format(**locals())  
 
 #print '%(major)s.%(minor)s.%(patch)s'% locals()
 

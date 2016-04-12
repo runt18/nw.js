@@ -24,13 +24,13 @@ html.write('''
     <title>iframe-remote negative test</title>
   </head>
   <body>
-    <iframe src="http://localhost:%s/test.html"></iframe>
+    <iframe src="http://localhost:{0!s}/test.html"></iframe>
     <script>
       document.write('<h1 id="res1">Node is ' + (typeof nw === 'undefined' ? 'DISABLED': 'ENABLED') + '</h1>');
     </script>
   </body>
 </html>
-''' % (port))
+'''.format((port)))
     
 html.close()
 

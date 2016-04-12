@@ -300,7 +300,7 @@ def generate_target_headers(platform_name, arch, version):
             f = open(nw_headers_path, 'rb')
             checksum_file = open(os.path.join(binaries_location, 'SHASUMS256.txt'), 'w')
             with f, checksum_file:
-                checksum_file.write('%s %s' % (sha256(f.read()).hexdigest(), nw_headers_name))
+                checksum_file.write('{0!s} {1!s}'.format(sha256(f.read()).hexdigest(), nw_headers_name))
             shutil.move(nw_headers_path, binaries_location)
             target['input'].append(nw_headers_name)
             target['input'].append('SHASUMS256.txt')

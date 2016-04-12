@@ -14,7 +14,7 @@ time.sleep(1)
 try:
     driver.implicitly_wait(10)
     print driver.current_url
-    driver.execute_script('startServer(%s)' % utils.free_port())
+    driver.execute_script('startServer({0!s})'.format(utils.free_port()))
     result = driver.find_element_by_id('server-started').get_attribute('innerHTML')
     print 'server started'
     driver.find_element_by_id('submit').click()

@@ -15,7 +15,7 @@ def click_and_assert(driver, id, expect):
     driver.switch_to_window(driver.window_handles[-1])
     driver.find_element_by_id('getwinsize').click()
     result = driver.find_element_by_id('result').get_attribute('innerHTML')
-    print 'window size: %s' % result
+    print 'window size: {0!s}'.format(result)
     assert (expect in result)
     driver.close()
     wait_window_handles(driver, 1)

@@ -41,7 +41,7 @@ try:
     wait_window_handles(driver, 4)
     driver.switch_to_window(driver.window_handles[3])
     print driver.current_url
-    assert(('http://localhost:%s/inspect.html' % port) in driver.current_url)
+    assert(('http://localhost:{0!s}/inspect.html'.format(port)) in driver.current_url)
 finally:
     server.terminate()
     driver.quit()

@@ -18,7 +18,7 @@ class RequestHandler(BaseHTTPRequestHandler):
         
 def main():
     port = 3456
-    print('Listening on localhost:%s' % port)
+    print('Listening on localhost:{0!s}'.format(port))
     server = HTTPServer(('', port), RequestHandler)
     server.serve_forever()
 

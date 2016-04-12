@@ -21,18 +21,18 @@ html.write('''
 var http = nw.require('http');
 var fs = nw.require('fs');
 
-function testgc() {
+function testgc() {{
   gc();
   document.write('<h1 id="res">success</h1>');
-}
+}}
 
 var file = fs.createWriteStream("out.png");
-var req = http.get("http://localhost:%s/g.png", function (res) {
+var req = http.get("http://localhost:{0!s}/g.png", function (res) {{
     res.pipe(file);
     setTimeout(testgc, 1000);
-});
+}});
 </script>
-''' % (port))
+'''.format((port)))
     
 html.close()
 

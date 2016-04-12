@@ -34,12 +34,12 @@ write_file('index.html', index_html)
 # test with trust anchors
 ca = read_ca_cert()
 pkg_with_trust_anchors = '''
-{
+{{
   "name": "test_additional_trust_anchors",
   "main": "index.html",
-  "additional_trust_anchors": ["%s"]
-}
-''' % ca
+  "additional_trust_anchors": ["{0!s}"]
+}}
+'''.format(ca)
 write_file('package.json', pkg_with_trust_anchors)
 
 driver = webdriver.Chrome(executable_path=os.environ['CHROMEDRIVER'], chrome_options=chrome_options, service_log_path="log", service_args=["--verbose"])

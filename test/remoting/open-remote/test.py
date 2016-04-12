@@ -21,12 +21,12 @@ server = subprocess.Popen(['python', 'http-server.py', port])
 html = open('index.html', 'w')
 html.write('''
 <script>
-nw.Window.open('http://localhost:%s/remote.html', function(win) {
+nw.Window.open('http://localhost:{0!s}/remote.html', function(win) {{
   document.write('<h1 id="res">returned window is ' + typeof win + '</h1>');
   win.y = 0;
-});
+}});
 </script>
-''' % (port))
+'''.format((port)))
     
 html.close()
 

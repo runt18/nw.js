@@ -26,9 +26,9 @@ def normalize_dir(dir):
 def patch_file(patch_file, patch_dir):
   ''' Apply a single patch file in a single directory. '''
   if not os.path.isfile(patch_file):
-    raise Exception('Patch file %s does not exist.' % patch_file)
+    raise Exception('Patch file {0!s} does not exist.'.format(patch_file))
 
-  sys.stdout.write('Reading patch file %s\n' % patch_file)
+  sys.stdout.write('Reading patch file {0!s}\n'.format(patch_file))
   patchObj = from_file(patch_file)
   patchObj.apply(normalize_dir(patch_dir))
 
@@ -38,7 +38,7 @@ def patch_config(config_file):
   patchdir = normalize_dir(os.path.dirname(os.path.abspath(config_file)))
 
   if not os.path.isfile(config_file):
-    raise Exception('Patch config file %s does not exist.' % config_file)
+    raise Exception('Patch config file {0!s} does not exist.'.format(config_file))
 
   # Parse the configuration file.
   scope = {}
@@ -52,7 +52,7 @@ def patch_config(config_file):
     if 'condition' in patch:
       # Check that the environment variable is set.
       if patch['condition'] not in os.environ:
-        sys.stdout.write('Skipping patch file %s\n' % file)
+        sys.stdout.write('Skipping patch file {0!s}\n'.format(file))
         dopatch = False
 
     if dopatch:
@@ -60,7 +60,7 @@ def patch_config(config_file):
       if 'note' in patch:
         separator = '-' * 79 + '\n'
         sys.stdout.write(separator)
-        sys.stdout.write('NOTE: %s\n' % patch['note'])
+        sys.stdout.write('NOTE: {0!s}\n'.format(patch['note']))
         sys.stdout.write(separator)
 
 
